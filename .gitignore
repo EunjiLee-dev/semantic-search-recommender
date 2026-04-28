@@ -217,8 +217,7 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-data/raw/
-data/embeddings/data/processed/
+# Data files
 data/raw/
 data/processed/
-data/raw/
+data/embeddings/

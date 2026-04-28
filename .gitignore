@@ -220,3 +220,5 @@ __marimo__/
 data/raw/
 data/embeddings/data/processed/
 data/raw/
+data/processed/
+data/raw/

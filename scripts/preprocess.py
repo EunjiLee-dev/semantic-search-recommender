@@ -1,12 +1,13 @@
 import pandas as pd
 import re
+import ast
 
 # load data
 df = pd.read_json("data/raw/yelp_academic_dataset_business.json", lines=True)
 
 
 # filter 
-df = df[df.get("is_open", 1) == 1]
+df = df[df["is_open"] == 1]
 
 df = df[
     [
@@ -26,12 +27,30 @@ df = df[
 df = df.dropna(subset=["name", "categories"])
 
 
+# extract price_level
+def parse_attributes(attr):
+    if pd.isna(attr):
+        return {}
+    if isinstance(attr, dict):
+        return attr
+    
+    try:
+        return ast.literal_eval(attr)
+    except:
+        return {}
+
+df["attributes_parsed"] = df["attributes"].apply(parse_attributes)
+
+df["price_level"] = df["attributes_parsed"].apply(
+    lambda x: x.get("RestaurantsPriceRange2")
+)
+df["price_level"] = pd.to_numeric(df["price_level"], errors="coerce")
+
+
 # make text
 df["text"] = (
     df["name"].fillna("") + " " +
-    df["categories"].fillna("") + " " +
-    df["city"].fillna("") + " " +
-    df["state"].fillna("")
+    df["categories"].fillna("") + " " 
 )
 
 

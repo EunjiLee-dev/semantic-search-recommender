@@ -13,7 +13,8 @@ texts = df["text"].tolist()
 embeddings = model.encode(
     texts,
     show_progress_bar=True,
-    batch_size=64
+    batch_size=64,
+    normalize_embeddings=True
 )
 
 

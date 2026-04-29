@@ -5,13 +5,35 @@ CHEAP_WORDS = ["cheap", "affordable", "low cost", "inexpensive", "not expensive"
 EXPENSIVE_WORDS = ["expensive", "high end", "luxury", "fine dining", "premium"]
 
 
+# hard filter
+def apply_hard_filters(metadata, intent): 
+    filtered_indices = []
+
+    for i, item in enumerate(metadata):
+        if intent.get("wifi") and not item.get("WiFi"):
+            continue
+        if intent.get("reservation") and not item.get("RestaurantsReservations"):
+            continue
+        if intent.get("parking") and not item.get("BusinessParking"):
+            continue
+        if intent.get("delivery") and not item.get("RestaurantsDelivery"):
+            continue
+
+        filtered_indices.append(i)
+    
+    return filtered_indices
+
 # intent parser
 def parse_query_intent(query):
     query = re.sub(r"[^a-z0-9\s]", " ", query.lower())
 
     return {
         "cheap": any(word in query for word in CHEAP_WORDS),
-        "expensive": any(word in query for word in EXPENSIVE_WORDS)
+        "expensive": any(word in query for word in EXPENSIVE_WORDS),
+        "wifi": "wifi" in query,
+        "reservation": "reservation" in query or "book" in query,
+        "parking": "parking" in query,
+        "delivery": "delivery" in query or "takeout" in query
     }
 
 # price

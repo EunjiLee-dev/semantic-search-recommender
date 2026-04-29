@@ -1,16 +1,5 @@
-from app.services.search import search
+import numpy as np
 
-queries = [
-    "cheap sushi",
-    "expensive sushi",
-    "not expensive sushi",
-]
+metadata = np.load("data/embeddings/metadata.npy", allow_pickle=True)
 
-for q in queries:
-    print("=" * 50)
-    print(f"QUERY: {q}")
-
-    results = search(q, top_k=5)
-
-    for r in results:
-        print(r)
+print(metadata[0].keys())

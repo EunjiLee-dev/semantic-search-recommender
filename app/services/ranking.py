@@ -78,3 +78,22 @@ def final_score(semantic, price, distance, has_intent):
         0.2 * price +
         0.2 * distance
     )
+
+
+# explanation
+def build_explanation(semantic, price, distance):
+    reasons = []
+
+    if semantic > 0.6:
+        reasons.append("Strong semantic match")
+
+    if price > 0.7:
+        reasons.append("Matches price preference")
+
+    if distance > 0.6:
+        reasons.append("Close to your location")
+
+    if not reasons:
+        reasons.append("General match based on similarity")
+
+    return reasons

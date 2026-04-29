@@ -6,7 +6,8 @@ from app.services.ranking import (
     distance_score, 
     final_score, 
     parse_query_intent, 
-    apply_hard_filters
+    apply_hard_filters,
+    build_explanation
 )
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
@@ -74,6 +75,16 @@ def search(query, top_k=5):
             "name": item["name"],
             "categories": item["categories"],
             "score": safe_float(score),
+            "breakdown": {
+                "semantic": safe_float(semantic),
+                "price": safe_float(price),
+                "distance": safe_float(distance),
+            },
+            "explanation": build_explanation(
+                semantic,
+                price,
+                distance,
+            ),
             "price_level": safe_float(item.get("price_level")),
             "wifi": item.get("WiFi"),
             "reservation": item.get("RestaurantsReservations"),

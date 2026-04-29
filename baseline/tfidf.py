@@ -1,9 +1,9 @@
-from sklearn.feature_extraction.text import TfidVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 class TFIDFSearch:
     def __init__(self, texts):
-        self.vectorizer = TfidVectorizer(stop_words="english")
+        self.vectorizer = TfidfVectorizer(stop_words="english")
         self.matrix = self.vectorizer.fit_transform(texts)
 
     def search(self, query, top_k=5):

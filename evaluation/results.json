@@ -1,0 +1,210 @@
+[
+  {
+    "query": "cheap sushi with parking",
+    "tfidf": [
+      {
+        "name": "Cheap Cheap Movers",
+        "categories": "Home Services, Movers, Local Services, Junk Removal & Hauling, Piano Services, Musical Instrument Services"
+      },
+      {
+        "name": "Five Star Parking",
+        "categories": "Automotive, Parking"
+      },
+      {
+        "name": "Fine Parking",
+        "categories": "Automotive, Parking"
+      },
+      {
+        "name": "The Parking Doctors",
+        "categories": "Hotels & Travel, Parking, Automotive"
+      },
+      {
+        "name": "Central Parking",
+        "categories": "Parking, Automotive"
+      }
+    ],
+    "sbert": [
+      {
+        "name": "Sushi Park",
+        "categories": "Restaurants, Sushi Bars",
+        "score": 0.645580350960907
+      },
+      {
+        "name": "Sushi Land",
+        "categories": "Restaurants, Sushi Bars, Japanese",
+        "score": 0.6093701542760509
+      },
+      {
+        "name": "Sushi Station",
+        "categories": "Sushi Bars, Restaurants",
+        "score": 0.6073691845999285
+      },
+      {
+        "name": "Sushi Garden",
+        "categories": "Sushi Bars, Japanese, Restaurants",
+        "score": 0.6031375889682248
+      },
+      {
+        "name": "Sushi O Sushi",
+        "categories": "Restaurants, Sushi Bars",
+        "score": 0.5990330237854815
+      }
+    ]
+  },
+  {
+    "query": "luxury pizza and wine",
+    "tfidf": [
+      {
+        "name": "Luxury Nails",
+        "categories": "Nail Salons, Beauty & Spas"
+      },
+      {
+        "name": "Luxury Nails",
+        "categories": "Nail Salons, Beauty & Spas"
+      },
+      {
+        "name": "Luxury Nails & Spa",
+        "categories": "Beauty & Spas, Nail Salons"
+      },
+      {
+        "name": "Luxury Nails & Spa",
+        "categories": "Beauty & Spas, Nail Salons"
+      },
+      {
+        "name": "Luxury Nails Salon",
+        "categories": "Nail Salons, Beauty & Spas"
+      }
+    ],
+    "sbert": [
+      {
+        "name": "Bar Bricco",
+        "categories": "Cocktail Bars, Nightlife, Wine Bars, Restaurants, Bars, Pizza, Italian",
+        "score": 0.5694221802868258
+      },
+      {
+        "name": "Entree BYOB",
+        "categories": "American (New), Bars, Wine Bars, Italian, Restaurants, Comfort Food, Seafood, Nightlife",
+        "score": 0.5481976400197525
+      },
+      {
+        "name": "Macaroni's Restaurant",
+        "categories": "Restaurants, Nightlife, Beer Gardens, Italian, Pizza",
+        "score": 0.5481624261788994
+      },
+      {
+        "name": "Bottega 104",
+        "categories": "Nightlife, Restaurants, Italian, Pizza, Wine Bars, Bars, Food Delivery Services, Food",
+        "score": 0.5457774932621977
+      },
+      {
+        "name": "La Strada",
+        "categories": "Food, Beer, Wine & Spirits, Restaurants, Italian, American (New)",
+        "score": 0.5445453554212704
+      }
+    ]
+  },
+  {
+    "query": "hamburger with wifi",
+    "tfidf": [
+      {
+        "name": "New Orleans Hamburger & Seafood Co",
+        "categories": "Seafood, Restaurants, Burgers"
+      },
+      {
+        "name": "New Orleans Hamburger & Seafood",
+        "categories": "Restaurants, Seafood, Burgers"
+      },
+      {
+        "name": "New Orleans Hamburger & Seafood Co",
+        "categories": "Seafood, Restaurants, Burgers"
+      },
+      {
+        "name": "Hamburger Stand",
+        "categories": "Hot Dogs, Restaurants, Fast Food, Burgers"
+      },
+      {
+        "name": "Hamburger Stand",
+        "categories": "Burgers, Fast Food, Restaurants, Hot Dogs"
+      }
+    ],
+    "sbert": [
+      {
+        "name": "A&W",
+        "categories": "Burgers, Restaurants, Fast Food",
+        "score": 0.40138518602011514
+      },
+      {
+        "name": "Burger Joint",
+        "categories": "Restaurants, Burgers",
+        "score": 0.38819920329640095
+      },
+      {
+        "name": "Clancy's Hamburgers",
+        "categories": "Burgers, Restaurants",
+        "score": 0.3876109522438771
+      },
+      {
+        "name": "Burger Bar",
+        "categories": "Burgers, Restaurants",
+        "score": 0.3855654137512367
+      },
+      {
+        "name": "Fox Burger",
+        "categories": "Burgers, Restaurants",
+        "score": 0.38249914001059604
+      }
+    ]
+  },
+  {
+    "query": "coffee and bread",
+    "tfidf": [
+      {
+        "name": "Beyond Bread",
+        "categories": "Sandwiches, Bakeries, Coffee & Tea, Restaurants, Food"
+      },
+      {
+        "name": "Beyond Bread",
+        "categories": "Sandwiches, Coffee & Tea, Food, Bakeries, Restaurants"
+      },
+      {
+        "name": "Bread Top House",
+        "categories": "Food, Bakeries"
+      },
+      {
+        "name": "Beyond Bread",
+        "categories": "Bakeries, Sandwiches, Cafes, Restaurants, Food"
+      },
+      {
+        "name": "Beyond Bread",
+        "categories": "Breakfast & Brunch, Restaurants, Sandwiches, Bakeries, Food"
+      }
+    ],
+    "sbert": [
+      {
+        "name": "Toasted Coffee House",
+        "categories": "Cafes, Food, Restaurants, Bakeries, Coffee & Tea",
+        "score": 0.5544319929458362
+      },
+      {
+        "name": "The Coffee Bar",
+        "categories": "Coffee & Tea, Food, Bakeries",
+        "score": 0.5470601126078598
+      },
+      {
+        "name": "The Coffee Box",
+        "categories": "Coffee & Tea, Food",
+        "score": 0.5401597806704147
+      },
+      {
+        "name": "Beyond Bread",
+        "categories": "Sandwiches, Bakeries, Coffee & Tea, Restaurants, Food",
+        "score": 0.5383320465659869
+      },
+      {
+        "name": "The Coffee House",
+        "categories": "Coffee & Tea, Food",
+        "score": 0.528888144888299
+      }
+    ]
+  }
+]

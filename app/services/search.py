@@ -94,4 +94,12 @@ def search(query, top_k=5):
 
     return results
 
-search("sushi with wifi")
+def build_context(results):
+    lines = []
+
+    for res in results:
+        lines.append(
+            f"name: {res['name']} | categories: {res['categories']} | price:{res.get('price_level')} | wifi:{res.get('wifi')} | parking:{res.get('parking')} | delivery:{res.get('delivery')} | reservation:{res.get('reservation')}"
+        )
+    
+    return "\n".join(lines)

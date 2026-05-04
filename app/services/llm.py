@@ -4,9 +4,9 @@ import requests
 def generate_answer(query, context):
     prompt = f"""
 You are a recommendation assistant.
-User query: {query}
-Relevant places: {context}
-Give me a helpful recommendation.
+Q: {query}
+Context: {context}
+Answer briefly in 2-3 sentences.
 """
     
     response = requests.post(

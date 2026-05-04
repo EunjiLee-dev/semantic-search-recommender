@@ -9,6 +9,7 @@ from app.services.ranking import (
     apply_hard_filters,
     build_explanation
 )
+from app.services.llm import generate_answer
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
 
@@ -21,7 +22,7 @@ embeddings = np.load("data/embeddings/poi_embeddings.npy")
 metadata = np.load("data/embeddings/metadata.npy", allow_pickle=True)
 
 
-# compare similarity and return top 5
+# compare similarity and return top 5 -> 2
 def safe_float(x):
     if x is None:
         return 0.0
@@ -32,11 +33,10 @@ def safe_float(x):
 def cosine_similarity(a,b):
     return np.dot(a, b)
 
-def search(query, top_k=5):
+def search(query, top_k=2):
     query_vec = model.encode(query, normalize_embeddings=True)
 
     intent = parse_query_intent(query)
-    print(intent) 
     has_intent = any(intent.values())
 
     filtered_indices = apply_hard_filters(metadata, intent)
@@ -94,6 +94,7 @@ def search(query, top_k=5):
 
     return results
 
+
 def build_context(results):
     lines = []
 
@@ -103,3 +104,15 @@ def build_context(results):
         )
     
     return "\n".join(lines)
+
+
+def search_with_llm(query):
+    results = search(query)
+    context = build_context(results)
+    answer = generate_answer(query, context)
+
+    return {
+        "query": query,
+        "results": results,
+        "answer": answer
+    }

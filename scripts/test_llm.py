@@ -1,8 +1,5 @@
-from app.services.llm import generate_answer
+from app.services.search import search_with_llm
 
-query = "cheap sushi"
-context = "Sushi Park | Restaurants | price:2"
+res = search_with_llm("cheap sushi with parking")
 
-result = generate_answer(query, context)
-
-print(result)
+print(res)

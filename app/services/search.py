@@ -22,7 +22,7 @@ embeddings = np.load("data/embeddings/poi_embeddings.npy")
 metadata = np.load("data/embeddings/metadata.npy", allow_pickle=True)
 
 
-# compare similarity and return top 5 -> 2
+# compare similarity and return top 5 -> 3
 def safe_float(x):
     if x is None:
         return 0.0
@@ -33,7 +33,7 @@ def safe_float(x):
 def cosine_similarity(a,b):
     return np.dot(a, b)
 
-def search(query, top_k=2):
+def search(query, top_k=3):
     query_vec = model.encode(query, normalize_embeddings=True)
 
     intent = parse_query_intent(query)
@@ -95,24 +95,35 @@ def search(query, top_k=2):
     return results
 
 
-def build_context(results):
-    lines = []
+def build_context(results, intent):
+    output = []
 
-    for res in results:
-        lines.append(
-            f"name: {res['name']} | categories: {res['categories']} | price:{res.get('price_level')} | wifi:{res.get('wifi')} | parking:{res.get('parking')} | delivery:{res.get('delivery')} | reservation:{res.get('reservation')}"
-        )
-    
-    return "\n".join(lines)
+    for r in results:
+        output.append({
+            "name": r["name"],
+            "categories": r["categories"],
+            "price_level": r.get("price_level"),
+            "relevant_features": {
+                k: v for k, v in {
+                    "wifi": r.get("wifi"),
+                    "parking": r.get("parking"),
+                    "delivery": r.get("delivery"),
+                    "reservation": r.get("reservation"),
+                }.items()
+                if intent.get(k)
+            }
+        })
+
+    return output
 
 
 def search_with_llm(query):
+    intent = parse_query_intent(query)
+
     results = search(query)
-    context = build_context(results)
+
+    context = build_context(results, intent)
+
     answer = generate_answer(query, context)
 
-    return {
-        "query": query,
-        "results": results,
-        "answer": answer
-    }
+    return answer

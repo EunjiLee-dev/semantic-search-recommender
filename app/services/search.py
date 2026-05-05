@@ -22,7 +22,7 @@ embeddings = np.load("data/embeddings/poi_embeddings.npy")
 metadata = np.load("data/embeddings/metadata.npy", allow_pickle=True)
 
 
-# compare similarity and return top 5 -> 3
+# compare similarity and return top 5
 def safe_float(x):
     if x is None:
         return 0.0
@@ -33,7 +33,7 @@ def safe_float(x):
 def cosine_similarity(a,b):
     return np.dot(a, b)
 
-def search(query, top_k=3):
+def search(query, top_k=5):
     query_vec = model.encode(query, normalize_embeddings=True)
 
     intent = parse_query_intent(query)
@@ -74,22 +74,11 @@ def search(query, top_k=3):
         results.append({
             "name": item["name"],
             "categories": item["categories"],
-            "score": safe_float(score),
-            "breakdown": {
-                "semantic": safe_float(semantic),
-                "price": safe_float(price),
-                "distance": safe_float(distance),
-            },
-            "explanation": build_explanation(
-                semantic,
-                price,
-                distance,
-            ),
             "price_level": safe_float(item.get("price_level")),
             "wifi": item.get("WiFi"),
-            "reservation": item.get("RestaurantsReservations"),
             "parking": item.get("BusinessParking"),
             "delivery": item.get("RestaurantsDelivery"),
+            "reservation": item.get("RestaurantsReservations"),
         })
 
     return results

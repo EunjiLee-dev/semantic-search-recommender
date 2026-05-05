@@ -1,0 +1,18 @@
+[
+  {
+    "query": "cheap sushi with parking",
+    "expected_categories": ["Sushi", "Japanese"],
+    "must_have": ["parking"],
+    "price_level_max": 2
+  },
+  {
+    "query": "coffee and bread with wifi",
+    "expected_categories": ["Cafe", "Bakery"],
+    "must_have": ["wifi"]
+  },
+  {
+    "query": "hamburger with delivery service",
+    "expected_categories": ["Burgers"],
+    "must_have": ["delivery"]
+  }
+]
